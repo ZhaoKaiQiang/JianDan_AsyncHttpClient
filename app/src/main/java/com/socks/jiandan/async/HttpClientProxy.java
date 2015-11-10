@@ -29,7 +29,6 @@ public class HttpClientProxy implements ResponseCode {
         }
     }
 
-
     public static AsyncHttpClient getInstance() {
         if (mHttpClient == null) {
             init();

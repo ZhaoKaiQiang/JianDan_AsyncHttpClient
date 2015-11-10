@@ -217,8 +217,8 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.CommentV
 
         RequestHandle requestHandle = HttpClientProxy.get(mActivity, Commentator.getUrlCommentList(thread_key), new Handler4CommentList(new OnHttpResponseCallBack<ArrayList<Commentator>>() {
             @Override
-            public void onSuccess(int statusCode, ArrayList<Commentator> commentators) {
-                if (commentators.size() == 0) {
+            public void onSuccess(int statusCode, ArrayList<Commentator> response) {
+                if (response.size() == 0) {
                     mLoadResultCallBack.onSuccess(LoadResultCallBack.SUCCESS_NONE, null);
                 } else {
                     commentators.clear();
@@ -227,7 +227,7 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.CommentV
                     ArrayList<Commentator> normalComment = new ArrayList<>();
 
                     //添加热门评论
-                    for (Commentator commentator : commentators) {
+                    for (Commentator commentator : response) {
                         if (commentator.getTag().equals(Commentator.TAG_HOT)) {
                             hotCommentator.add(commentator);
                         } else {
@@ -268,6 +268,9 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.CommentV
                 thread_id = (String) obj;
             }
         }));
+
+        mRequestHandles.add(requestHandle);
+
     }
 
 
