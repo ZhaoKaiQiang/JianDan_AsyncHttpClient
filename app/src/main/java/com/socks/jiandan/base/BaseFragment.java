@@ -3,7 +3,9 @@ package com.socks.jiandan.base;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 
+import com.loopj.android.http.RequestHandle;
 import com.socks.jiandan.BuildConfig;
+import com.socks.jiandan.async.HttpClientProxy;
 import com.socks.jiandan.utils.logger.LogLevel;
 import com.socks.jiandan.utils.logger.Logger;
 import com.socks.jiandan.view.imageloader.ImageLoadProxy;
@@ -29,4 +31,7 @@ public class BaseFragment extends Fragment implements ConstantString {
         ImageLoadProxy.getImageLoader().clearMemoryCache();
     }
 
+    protected void cancelRequest(RequestHandle... requestHandle) {
+        HttpClientProxy.cancelRequest(requestHandle);
+    }
 }

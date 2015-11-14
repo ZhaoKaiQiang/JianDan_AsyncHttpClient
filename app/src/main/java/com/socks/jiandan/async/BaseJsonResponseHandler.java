@@ -48,4 +48,9 @@ public abstract class BaseJsonResponseHandler extends BaseJsonHttpResponseHandle
         return new NetworkErrorException(reason);
     }
 
+    @Override
+    public void onRetry(int retryNo) {
+        super.onRetry(retryNo);
+
+    }
 }

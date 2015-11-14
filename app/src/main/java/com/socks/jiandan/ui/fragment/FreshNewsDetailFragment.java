@@ -82,18 +82,11 @@ public class FreshNewsDetailFragment extends BaseFragment {
             @Override
             public void onFailure(int statusCode, Throwable throwable) {
                 ShowToast.Short(throwable.getMessage());
+                loading.stop();
             }
         }));
 
         loading.start();
-        loading.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                if (loading.isShown()) {
-                    loading.stop();
-                }
-            }
-        }, 10 * 1000);
 
     }
 
@@ -177,8 +170,6 @@ public class FreshNewsDetailFragment extends BaseFragment {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        if (requestHandle != null && !requestHandle.isFinished()) {
-            requestHandle.cancel(true);
-        }
+        cancelRequest(requestHandle);
     }
 }
