@@ -9,4 +9,10 @@ public interface OnHttpResponseCallBack<T> {
 
     void onFailure(int statusCode, Throwable throwable);
 
+    void onStart();
+
+    void onFinish();
+
+    void onCancel();
+
 }

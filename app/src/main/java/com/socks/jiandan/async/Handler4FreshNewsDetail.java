@@ -2,7 +2,7 @@ package com.socks.jiandan.async;
 
 import android.support.annotation.NonNull;
 
-import com.socks.jiandan.callback.OnHttpResponseCallBack;
+import com.socks.jiandan.callback.OnHttpResponseCallBackImpl;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -12,7 +12,7 @@ import org.json.JSONObject;
  */
 public class Handler4FreshNewsDetail extends BaseJsonResponseHandler {
 
-    public Handler4FreshNewsDetail(@NonNull OnHttpResponseCallBack<String> onHttpResponseCallBack) {
+    public Handler4FreshNewsDetail(@NonNull OnHttpResponseCallBackImpl<String> onHttpResponseCallBack) {
         super(onHttpResponseCallBack);
     }
 

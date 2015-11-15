@@ -16,7 +16,7 @@ import com.socks.jiandan.R;
 import com.socks.jiandan.async.Handler4FreshNewsDetail;
 import com.socks.jiandan.async.HttpClientProxy;
 import com.socks.jiandan.base.BaseFragment;
-import com.socks.jiandan.callback.OnHttpResponseCallBack;
+import com.socks.jiandan.callback.OnHttpResponseCallBackImpl;
 import com.socks.jiandan.model.FreshNews;
 import com.socks.jiandan.ui.CommentListActivity;
 import com.socks.jiandan.utils.ShareUtil;
@@ -73,7 +73,7 @@ public class FreshNewsDetailFragment extends BaseFragment {
             }
         });
 
-        requestHandle = HttpClientProxy.get(getActivity(), FreshNews.getUrlFreshNewsDetail(freshNews.getId()), new Handler4FreshNewsDetail(new OnHttpResponseCallBack<String>() {
+        requestHandle = HttpClientProxy.get(getActivity(), FreshNews.getUrlFreshNewsDetail(freshNews.getId()), new Handler4FreshNewsDetail(new OnHttpResponseCallBackImpl<String>() {
             @Override
             public void onSuccess(int statusCode, String response) {
                 webView.loadDataWithBaseURL("", getHtml(freshNews, response), "text/html", "utf-8", "");

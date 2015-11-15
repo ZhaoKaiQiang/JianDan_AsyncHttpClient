@@ -21,7 +21,7 @@ import com.socks.jiandan.base.ConstantString;
 import com.socks.jiandan.base.JDApplication;
 import com.socks.jiandan.callback.LoadFinishCallBack;
 import com.socks.jiandan.callback.LoadResultCallBack;
-import com.socks.jiandan.callback.OnHttpResponseCallBack;
+import com.socks.jiandan.callback.OnHttpResponseCallBackImpl;
 import com.socks.jiandan.model.Comment4FreshNews;
 import com.socks.jiandan.model.Commentator;
 import com.socks.jiandan.ui.PushCommentActivity;
@@ -215,7 +215,7 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.CommentV
 
     public void loadData() {
 
-        RequestHandle requestHandle = HttpClientProxy.get(mActivity, Commentator.getUrlCommentList(thread_key), new Handler4CommentList(new OnHttpResponseCallBack<ArrayList<Commentator>>() {
+        RequestHandle requestHandle = HttpClientProxy.get(mActivity, Commentator.getUrlCommentList(thread_key), new Handler4CommentList(new OnHttpResponseCallBackImpl<ArrayList<Commentator>>() {
             @Override
             public void onSuccess(int statusCode, ArrayList<Commentator> response) {
                 if (response.size() == 0) {
@@ -276,7 +276,7 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.CommentV
 
     public void loadData4FreshNews() {
 
-        RequestHandle requestHandle = HttpClientProxy.get(mActivity, Comment4FreshNews.getUrlComments(thread_key), new Handler4FreshNewsCommentList(new OnHttpResponseCallBack<ArrayList<Comment4FreshNews>>() {
+        RequestHandle requestHandle = HttpClientProxy.get(mActivity, Comment4FreshNews.getUrlComments(thread_key), new Handler4FreshNewsCommentList(new OnHttpResponseCallBackImpl<ArrayList<Comment4FreshNews>>() {
             @Override
             public void onSuccess(int statusCode, ArrayList<Comment4FreshNews> response) {
                 if (response.size() == 0) {

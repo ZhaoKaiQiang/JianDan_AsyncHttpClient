@@ -4,7 +4,7 @@ import android.support.annotation.NonNull;
 
 import com.google.gson.reflect.TypeToken;
 import com.socks.jiandan.callback.LoadFinishCallBack;
-import com.socks.jiandan.callback.OnHttpResponseCallBack;
+import com.socks.jiandan.callback.OnHttpResponseCallBackImpl;
 import com.socks.jiandan.model.Comment4FreshNews;
 import com.socks.jiandan.utils.JSONParser;
 
@@ -23,7 +23,7 @@ public class Handler4FreshNewsCommentList extends BaseJsonResponseHandler {
 
     private LoadFinishCallBack mCallBack;
 
-    public Handler4FreshNewsCommentList(@NonNull OnHttpResponseCallBack<ArrayList<Comment4FreshNews>> onHttpResponseCallBack, LoadFinishCallBack callBack) {
+    public Handler4FreshNewsCommentList(@NonNull OnHttpResponseCallBackImpl<ArrayList<Comment4FreshNews>> onHttpResponseCallBack, LoadFinishCallBack callBack) {
         super(onHttpResponseCallBack);
         mCallBack = callBack;
     }

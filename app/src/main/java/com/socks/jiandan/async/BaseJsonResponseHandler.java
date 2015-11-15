@@ -3,20 +3,19 @@ package com.socks.jiandan.async;
 import android.accounts.NetworkErrorException;
 import android.support.annotation.NonNull;
 
-import com.loopj.android.http.BaseJsonHttpResponseHandler;
-import com.socks.jiandan.callback.OnHttpResponseCallBack;
+import com.loopj.android.http.TextHttpResponseHandler;
+import com.socks.jiandan.callback.OnHttpResponseCallBackImpl;
 
 import cz.msebera.android.httpclient.Header;
 
 /**
  * Created by zhaokaiqiang on 15/11/10.
  */
-public abstract class BaseJsonResponseHandler extends BaseJsonHttpResponseHandler implements ResponseCode {
+public abstract class BaseJsonResponseHandler extends TextHttpResponseHandler implements ResponseCode {
 
-    protected OnHttpResponseCallBack mHttpResponseCallBack;
+    protected OnHttpResponseCallBackImpl mHttpResponseCallBack;
 
-
-    public BaseJsonResponseHandler(@NonNull OnHttpResponseCallBack onHttpResponseCallBack) {
+    public BaseJsonResponseHandler(@NonNull OnHttpResponseCallBackImpl onHttpResponseCallBack) {
 
         if (onHttpResponseCallBack == null) {
             throw new IllegalArgumentException("OnHttpResponseCallBack can't be null !");
@@ -26,18 +25,31 @@ public abstract class BaseJsonResponseHandler extends BaseJsonHttpResponseHandle
     }
 
     @Override
-    public void onSuccess(int statusCode, Header[] headers, String rawJsonResponse, Object response) {
-        onSuccess(statusCode, rawJsonResponse);
+    public void onStart() {
+        super.onStart();
+        mHttpResponseCallBack.onStart();
     }
 
     @Override
-    public void onFailure(int statusCode, Header[] headers, Throwable throwable, String rawJsonData, Object errorResponse) {
+    public void onFinish() {
+        super.onFinish();
+        mHttpResponseCallBack.onFinish();
+    }
+
+    @Override
+    public void onCancel() {
+        super.onCancel();
+        mHttpResponseCallBack.onCancel();
+    }
+
+    @Override
+    public void onSuccess(int statusCode, Header[] headers, String responseString) {
+        onSuccess(statusCode, responseString);
+    }
+
+    @Override
+    public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
         onFailure(statusCode, throwable);
-    }
-
-    @Override
-    protected Object parseResponse(String rawJsonData, boolean isFailure) throws Throwable {
-        return null;
     }
 
     protected abstract void onSuccess(int statusCode, String rawJsonResponse);
@@ -48,9 +60,4 @@ public abstract class BaseJsonResponseHandler extends BaseJsonHttpResponseHandle
         return new NetworkErrorException(reason);
     }
 
-    @Override
-    public void onRetry(int retryNo) {
-        super.onRetry(retryNo);
-
-    }
 }

@@ -3,7 +3,7 @@ package com.socks.jiandan.async;
 import android.support.annotation.NonNull;
 
 import com.google.gson.reflect.TypeToken;
-import com.socks.jiandan.callback.OnHttpResponseCallBack;
+import com.socks.jiandan.callback.OnHttpResponseCallBackImpl;
 import com.socks.jiandan.model.Picture;
 import com.socks.jiandan.utils.JSONParser;
 
@@ -17,7 +17,7 @@ import java.util.ArrayList;
  */
 public class Handler4Picture extends BaseJsonResponseHandler {
 
-    public Handler4Picture(@NonNull OnHttpResponseCallBack<ArrayList<Picture>> onHttpResponseCallBack) {
+    public Handler4Picture(@NonNull OnHttpResponseCallBackImpl<ArrayList<Picture>> onHttpResponseCallBack) {
         super(onHttpResponseCallBack);
     }
 

@@ -2,7 +2,7 @@ package com.socks.jiandan.async;
 
 import android.support.annotation.NonNull;
 
-import com.socks.jiandan.callback.OnHttpResponseCallBack;
+import com.socks.jiandan.callback.OnHttpResponseCallBackImpl;
 import com.socks.jiandan.model.Comment4FreshNews;
 import com.socks.jiandan.utils.logger.Logger;
 
@@ -16,7 +16,7 @@ import java.text.MessageFormat;
  */
 public class Handler4ReplyFreshNews extends BaseJsonResponseHandler {
 
-    public Handler4ReplyFreshNews(@NonNull OnHttpResponseCallBack<Boolean> onHttpResponseCallBack) {
+    public Handler4ReplyFreshNews(@NonNull OnHttpResponseCallBackImpl<Boolean> onHttpResponseCallBack) {
         super(onHttpResponseCallBack);
     }
 

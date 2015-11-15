@@ -2,7 +2,7 @@ package com.socks.jiandan.async;
 
 import android.support.annotation.NonNull;
 
-import com.socks.jiandan.callback.OnHttpResponseCallBack;
+import com.socks.jiandan.callback.OnHttpResponseCallBackImpl;
 import com.socks.jiandan.model.FreshNews;
 
 import org.json.JSONArray;
@@ -16,7 +16,7 @@ import java.util.ArrayList;
  */
 public class Handler4FreshNews extends BaseJsonResponseHandler {
 
-    public Handler4FreshNews(@NonNull OnHttpResponseCallBack<ArrayList<FreshNews>> onHttpResponseCallBack) {
+    public Handler4FreshNews(@NonNull OnHttpResponseCallBackImpl<ArrayList<FreshNews>> onHttpResponseCallBack) {
         super(onHttpResponseCallBack);
     }
 

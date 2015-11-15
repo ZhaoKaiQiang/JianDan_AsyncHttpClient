@@ -2,7 +2,7 @@ package com.socks.jiandan.async;
 
 import android.support.annotation.NonNull;
 
-import com.socks.jiandan.callback.OnHttpResponseCallBack;
+import com.socks.jiandan.callback.OnHttpResponseCallBackImpl;
 
 import org.json.JSONObject;
 
@@ -13,7 +13,7 @@ import java.util.HashMap;
  */
 public class Handler4Reply extends BaseJsonResponseHandler {
 
-    public Handler4Reply(@NonNull OnHttpResponseCallBack<Boolean> onHttpResponseCallBack) {
+    public Handler4Reply(@NonNull OnHttpResponseCallBackImpl<Boolean> onHttpResponseCallBack) {
         super(onHttpResponseCallBack);
     }
 

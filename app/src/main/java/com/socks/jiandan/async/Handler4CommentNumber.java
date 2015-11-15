@@ -2,7 +2,7 @@ package com.socks.jiandan.async;
 
 import android.support.annotation.NonNull;
 
-import com.socks.jiandan.callback.OnHttpResponseCallBack;
+import com.socks.jiandan.callback.OnHttpResponseCallBackImpl;
 import com.socks.jiandan.model.CommentNumber;
 
 import org.json.JSONException;
@@ -16,7 +16,7 @@ import java.util.ArrayList;
  */
 public class Handler4CommentNumber extends BaseJsonResponseHandler {
 
-    public Handler4CommentNumber(@NonNull OnHttpResponseCallBack<ArrayList<CommentNumber>> onHttpResponseCallBack) {
+    public Handler4CommentNumber(@NonNull OnHttpResponseCallBackImpl<ArrayList<CommentNumber>> onHttpResponseCallBack) {
         super(onHttpResponseCallBack);
     }
 

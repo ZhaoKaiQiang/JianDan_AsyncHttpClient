@@ -30,7 +30,7 @@ import com.socks.jiandan.base.JDApplication;
 import com.socks.jiandan.cache.PictureCache;
 import com.socks.jiandan.callback.LoadFinishCallBack;
 import com.socks.jiandan.callback.LoadResultCallBack;
-import com.socks.jiandan.callback.OnHttpResponseCallBack;
+import com.socks.jiandan.callback.OnHttpResponseCallBackImpl;
 import com.socks.jiandan.model.CommentNumber;
 import com.socks.jiandan.model.Picture;
 import com.socks.jiandan.utils.JSONParser;
@@ -244,7 +244,7 @@ public class PictureAdapter extends RecyclerView.Adapter<PictureAdapter.PictureV
 
     private void loadData() {
 
-        RequestHandle requestHandle = HttpClientProxy.get(mActivity, Picture.getRequestUrl(mType, page), new Handler4Picture(new OnHttpResponseCallBack<ArrayList<Picture>>() {
+        RequestHandle requestHandle = HttpClientProxy.get(mActivity, Picture.getRequestUrl(mType, page), new Handler4Picture(new OnHttpResponseCallBackImpl<ArrayList<Picture>>() {
             @Override
             public void onSuccess(int statusCode, ArrayList<Picture> pictures) {
                 getCommentCounts(pictures);
@@ -280,7 +280,7 @@ public class PictureAdapter extends RecyclerView.Adapter<PictureAdapter.PictureV
             sb.append("comment-" + joke.getComment_ID() + ",");
         }
 
-        RequestHandle requestHandle = HttpClientProxy.get(mActivity,CommentNumber.getCommentCountsURL(sb.toString()),new Handler4CommentNumber(new OnHttpResponseCallBack<ArrayList<CommentNumber>>() {
+        RequestHandle requestHandle = HttpClientProxy.get(mActivity,CommentNumber.getCommentCountsURL(sb.toString()),new Handler4CommentNumber(new OnHttpResponseCallBackImpl<ArrayList<CommentNumber>>() {
             @Override
             public void onSuccess(int statusCode, ArrayList<CommentNumber> commentNumbers) {
                 mLoadResultCallBack.onSuccess(LoadResultCallBack.SUCCESS_OK, null);

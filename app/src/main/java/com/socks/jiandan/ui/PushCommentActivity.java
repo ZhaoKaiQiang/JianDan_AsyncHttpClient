@@ -21,7 +21,7 @@ import com.socks.jiandan.async.HttpClientProxy;
 import com.socks.jiandan.base.BaseActivity;
 import com.socks.jiandan.base.ConstantString;
 import com.socks.jiandan.base.JDApplication;
-import com.socks.jiandan.callback.OnHttpResponseCallBack;
+import com.socks.jiandan.callback.OnHttpResponseCallBackImpl;
 import com.socks.jiandan.model.Commentator;
 import com.socks.jiandan.utils.EditTextShakeHelper;
 import com.socks.jiandan.utils.SharedPreUtils;
@@ -138,7 +138,7 @@ public class PushCommentActivity extends BaseActivity {
                                     }
                                     //提交评论
 
-                                    HttpClientProxy.get(PushCommentActivity.this, url, new Handler4ReplyFreshNews(new OnHttpResponseCallBack<Boolean>() {
+                                    HttpClientProxy.get(PushCommentActivity.this, url, new Handler4ReplyFreshNews(new OnHttpResponseCallBackImpl<Boolean>() {
                                         @Override
                                         public void onSuccess(int statusCode, Boolean aBoolean) {
                                             ShowToast.Short(REPLY_SUCCESS);
@@ -173,7 +173,7 @@ public class PushCommentActivity extends BaseActivity {
 
                                 RequestParams params = new RequestParams(requestParams);
 
-                                HttpClientProxy.post(PushCommentActivity.this, Commentator.URL_PUSH_COMMENT, params, new Handler4Reply(new OnHttpResponseCallBack<Boolean>() {
+                                HttpClientProxy.post(PushCommentActivity.this, Commentator.URL_PUSH_COMMENT, params, new Handler4Reply(new OnHttpResponseCallBackImpl<Boolean>() {
                                     @Override
                                     public void onSuccess(int statusCode, Boolean aBoolean) {
                                         ShowToast.Short(REPLY_SUCCESS);

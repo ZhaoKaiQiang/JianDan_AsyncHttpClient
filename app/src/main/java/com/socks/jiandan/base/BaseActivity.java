@@ -13,10 +13,8 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 
-import com.loopj.android.http.RequestHandle;
 import com.socks.jiandan.BuildConfig;
 import com.socks.jiandan.R;
-import com.socks.jiandan.async.HttpClientProxy;
 import com.socks.jiandan.utils.logger.LogLevel;
 import com.socks.jiandan.utils.logger.Logger;
 
@@ -64,10 +62,6 @@ public abstract class BaseActivity extends AppCompatActivity implements Constant
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(id_content, fragment);
         transaction.commit();
-    }
-
-    protected void cancelRequest(RequestHandle... requestHandle) {
-        HttpClientProxy.cancelRequest(requestHandle);
     }
 
 }

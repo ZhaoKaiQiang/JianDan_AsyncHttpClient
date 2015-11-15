@@ -22,7 +22,7 @@ import com.socks.jiandan.base.ConstantString;
 import com.socks.jiandan.cache.FreshNewsCache;
 import com.socks.jiandan.callback.LoadFinishCallBack;
 import com.socks.jiandan.callback.LoadResultCallBack;
-import com.socks.jiandan.callback.OnHttpResponseCallBack;
+import com.socks.jiandan.callback.OnHttpResponseCallBackImpl;
 import com.socks.jiandan.model.FreshNews;
 import com.socks.jiandan.utils.JSONParser;
 import com.socks.jiandan.ui.FreshNewsDetailActivity;
@@ -155,7 +155,7 @@ public class FreshNewsAdapter extends RecyclerView.Adapter<FreshNewsAdapter.View
         if (NetWorkUtil.isNetWorkConnected(mActivity)) {
 
             RequestHandle requestHandle = HttpClientProxy.get(mActivity, FreshNews.getUrlFreshNews(page),
-                    new Handler4FreshNews(new OnHttpResponseCallBack<ArrayList<FreshNews>>() {
+                    new Handler4FreshNews(new OnHttpResponseCallBackImpl<ArrayList<FreshNews>>() {
                         @Override
                         public void onSuccess(int statusCode, ArrayList<FreshNews> response) {
 

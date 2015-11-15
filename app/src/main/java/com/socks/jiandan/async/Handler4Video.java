@@ -2,7 +2,7 @@ package com.socks.jiandan.async;
 
 import android.support.annotation.NonNull;
 
-import com.socks.jiandan.callback.OnHttpResponseCallBack;
+import com.socks.jiandan.callback.OnHttpResponseCallBackImpl;
 import com.socks.jiandan.model.Video;
 
 import org.json.JSONArray;
@@ -16,7 +16,7 @@ import java.util.ArrayList;
  */
 public class Handler4Video extends BaseJsonResponseHandler {
 
-    public Handler4Video(@NonNull OnHttpResponseCallBack<ArrayList<Video>> onHttpResponseCallBack) {
+    public Handler4Video(@NonNull OnHttpResponseCallBackImpl<ArrayList<Video>> onHttpResponseCallBack) {
         super(onHttpResponseCallBack);
     }
 

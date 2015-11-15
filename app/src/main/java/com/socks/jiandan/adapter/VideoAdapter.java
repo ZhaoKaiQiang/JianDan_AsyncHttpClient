@@ -29,7 +29,7 @@ import com.socks.jiandan.base.JDApplication;
 import com.socks.jiandan.cache.VideoCache;
 import com.socks.jiandan.callback.LoadFinishCallBack;
 import com.socks.jiandan.callback.LoadResultCallBack;
-import com.socks.jiandan.callback.OnHttpResponseCallBack;
+import com.socks.jiandan.callback.OnHttpResponseCallBackImpl;
 import com.socks.jiandan.model.CommentNumber;
 import com.socks.jiandan.model.Video;
 import com.socks.jiandan.utils.JSONParser;
@@ -183,7 +183,7 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.VideoViewHol
 
     private void loadData() {
 
-        RequestHandle requestHandle = HttpClientProxy.get(mActivity,Video.getUrlVideos(page),new Handler4Video(new OnHttpResponseCallBack<ArrayList<Video>>() {
+        RequestHandle requestHandle = HttpClientProxy.get(mActivity,Video.getUrlVideos(page),new Handler4Video(new OnHttpResponseCallBackImpl<ArrayList<Video>>() {
             @Override
             public void onSuccess(int statusCode, ArrayList<Video> videos) {
                 getCommentCounts(videos);
@@ -222,7 +222,7 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.VideoViewHol
         }
 
 
-        RequestHandle requestHandle = HttpClientProxy.get(mActivity,CommentNumber.getCommentCountsURL(sb.toString()),new Handler4CommentNumber(new OnHttpResponseCallBack<ArrayList<CommentNumber>>() {
+        RequestHandle requestHandle = HttpClientProxy.get(mActivity,CommentNumber.getCommentCountsURL(sb.toString()),new Handler4CommentNumber(new OnHttpResponseCallBackImpl<ArrayList<CommentNumber>>() {
             @Override
             public void onSuccess(int statusCode, ArrayList<CommentNumber> commentNumbers) {
                 mLoadResultCallBack.onSuccess(LoadResultCallBack.SUCCESS_OK, null);

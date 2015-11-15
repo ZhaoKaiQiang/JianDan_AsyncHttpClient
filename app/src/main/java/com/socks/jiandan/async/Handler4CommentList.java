@@ -4,7 +4,7 @@ import android.support.annotation.NonNull;
 import android.text.TextUtils;
 
 import com.socks.jiandan.callback.LoadFinishCallBack;
-import com.socks.jiandan.callback.OnHttpResponseCallBack;
+import com.socks.jiandan.callback.OnHttpResponseCallBackImpl;
 import com.socks.jiandan.model.Commentator;
 import com.socks.jiandan.utils.TextUtil;
 
@@ -22,8 +22,9 @@ public class Handler4CommentList extends BaseJsonResponseHandler {
 
     private LoadFinishCallBack callBack;
 
-    public Handler4CommentList(@NonNull OnHttpResponseCallBack<ArrayList<Commentator>> onHttpResponseCallBack, LoadFinishCallBack callBack) {
+    public Handler4CommentList(@NonNull OnHttpResponseCallBackImpl<ArrayList<Commentator>> onHttpResponseCallBack, LoadFinishCallBack callBack) {
         super(onHttpResponseCallBack);
+        this.callBack = callBack;
     }
 
     @Override

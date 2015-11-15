@@ -106,4 +106,8 @@ public class HttpClientProxy implements ResponseCode {
         }
     }
 
+    public static void cancelRequest(Object tag) {
+        getInstance().cancelRequestsByTAG(tag, true);
+    }
+
 }

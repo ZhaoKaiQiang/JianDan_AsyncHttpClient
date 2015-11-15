@@ -3,7 +3,7 @@ package com.socks.jiandan.async;
 import android.support.annotation.NonNull;
 
 import com.google.gson.reflect.TypeToken;
-import com.socks.jiandan.callback.OnHttpResponseCallBack;
+import com.socks.jiandan.callback.OnHttpResponseCallBackImpl;
 import com.socks.jiandan.model.Joke;
 import com.socks.jiandan.utils.JSONParser;
 
@@ -17,7 +17,7 @@ import java.util.ArrayList;
  */
 public class Handler4Joke extends BaseJsonResponseHandler {
 
-    public Handler4Joke(@NonNull OnHttpResponseCallBack<ArrayList<Joke>> onHttpResponseCallBack) {
+    public Handler4Joke(@NonNull OnHttpResponseCallBackImpl<ArrayList<Joke>> onHttpResponseCallBack) {
         super(onHttpResponseCallBack);
     }
 

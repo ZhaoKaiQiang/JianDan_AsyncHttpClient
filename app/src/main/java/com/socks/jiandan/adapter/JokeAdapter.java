@@ -24,7 +24,7 @@ import com.socks.jiandan.base.JDApplication;
 import com.socks.jiandan.cache.JokeCache;
 import com.socks.jiandan.callback.LoadFinishCallBack;
 import com.socks.jiandan.callback.LoadResultCallBack;
-import com.socks.jiandan.callback.OnHttpResponseCallBack;
+import com.socks.jiandan.callback.OnHttpResponseCallBackImpl;
 import com.socks.jiandan.model.CommentNumber;
 import com.socks.jiandan.model.Joke;
 import com.socks.jiandan.utils.JSONParser;
@@ -156,7 +156,7 @@ public class JokeAdapter extends RecyclerView.Adapter<JokeAdapter.JokeViewHolder
 
     private void loadData() {
 
-        RequestHandle requestHandle = HttpClientProxy.get(mActivity,Joke.getRequestUrl(page),new Handler4Joke(new OnHttpResponseCallBack<ArrayList<Joke>>() {
+        RequestHandle requestHandle = HttpClientProxy.get(mActivity,Joke.getRequestUrl(page),new Handler4Joke(new OnHttpResponseCallBackImpl<ArrayList<Joke>>() {
             @Override
             public void onSuccess(int statusCode, ArrayList<Joke> jokes) {
                 getCommentCounts(jokes);
@@ -196,7 +196,7 @@ public class JokeAdapter extends RecyclerView.Adapter<JokeAdapter.JokeViewHolder
         }
 
 
-        RequestHandle requestHandle = HttpClientProxy.get(mActivity, CommentNumber.getCommentCountsURL(url), new Handler4CommentNumber(new OnHttpResponseCallBack<ArrayList<CommentNumber>>() {
+        RequestHandle requestHandle = HttpClientProxy.get(mActivity, CommentNumber.getCommentCountsURL(url), new Handler4CommentNumber(new OnHttpResponseCallBackImpl<ArrayList<CommentNumber>>() {
             @Override
             public void onSuccess(int statusCode, ArrayList<CommentNumber> commentNumbers) {
                 for (int i = 0; i < jokes.size(); i++) {
